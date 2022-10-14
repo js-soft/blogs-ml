@@ -121,3 +121,4 @@ Now are done and can use our model to implement a realtime face tracking app!
 <If you want to learn more about the technical details behind neural networks, I strongly recommend "Neural Networks from Scratch in Python" by Harrison Kinsley & Daniel Kukiela if you are interested in a simple implementation and the intuition behind why and how neural networks do what they do. I also recommmend "Deep Learning" by Ian Goodfellow in case you are interested in the deep mathematical details of Deep Learning and neural networks>
 
 - TODO: "I" vs. "we"
+- TODO: Parametrisierung von BBoxes korrigieren (Eckpunkte anstatt Zentrum+H/W
