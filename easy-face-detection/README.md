@@ -76,7 +76,6 @@ Let's take a step back and have a look at what we have accomplished so far: We h
 
 This is nothing to sneeze at! In practice, getting to this point and finishing the data preparation is often 80% of the total work. In machine learning, just as anywhere else, the principle of garbage in, garbage out applies, so all of the above efforts amount to time certainly well spent.
 
-<!--Although this may seem kThis might be a very simplified (and streamlined) version of this process, but in practice, concerning yourself with getting enough high quality Data is often times 80% of the work of a project. In traditional development the phrase "garbage in, garbage out" is very common and in this field it applies even more so since data is the only thing our algorithms learn from. Now it's time to actually put our Dataset to use and move on to:-->
 
 # III Training
 
@@ -98,20 +97,20 @@ For this we will use a run of the mill BinaryCrossEntropy Loss. The "Box Loss" a
 
 In the past, convolutional neural networks (abbreviated *CNN* or *convnet*), a special kind of neural network architecture, have proven themselves to be very well suited for computer vision tasks. To solve our problem we're going to use a pretrained convnet and adjust it to our specific problem. This is a common practice referred to as *transfer learning* which we refer to in another blog post.
 
-Specifically, we're going to use the [VGG16 model](https://arxiv.org/abs/1409.1556), pretrained on [ImageNet](https://www.image-net.org/), a large image classification dataset.
+Specifically, we're going to use the [VGG16 model](https://arxiv.org/abs/1409.1556), pretrained on [ImageNet](https://www.image-net.org/), a large image classification dataset. This provides the added benefit of not having to run the training process for too long before acceptable results are achieved.
 
 This has the advantage that we don't need to train the Network for as long and will likely still get pretty good results. Finally the Network has 2 Output Layers. One for our bounding box prediction and one for our binary "face present" truth value.
 
-Step 6: Training our Neural Network:
-
-- TODO: Cost- und Accuracygraph einblenden
+## III.2 Training our Neural Network
 
 In practice, this step is often just a bunch of trial and error. Since this isn't that complex of a problem and our solution isn't required to be perfect, I just trained this Network once on my personal Laptop (M1 Macbook Air) for about 24 hours and got pretty good results.
 
-Step 7: Finished!:
+- TODO: Trainingsverlauf einblenden
 
-Now are done and can use our model to implement a realtime face tracking app!
+# IV Done
 
-<If you want to learn more about the technical details behind neural networks, I strongly recommend "Neural Networks from Scratch in Python" by Harrison Kinsley & Daniel Kukiela if you are interested in a simple implementation and the intuition behind why and how neural networks do what they do. I also recommmend "Deep Learning" by Ian Goodfellow in case you are interested in the deep mathematical details of Deep Learning and neural networks>
+Now are done and can use our model to implement a realtime face tracking application.
+
+- TODO: Finale BBox Animation
 
 - TODO: "I" vs. "we"
