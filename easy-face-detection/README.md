@@ -35,19 +35,13 @@ The annotation of image data, such as drawing a bounding box, are done using ded
 
 - TODO: Bilder von LabelMe bei der Arbeit einfügen
 
-Note that the original images are not modified in any way. LabelMe parameterizes the bounding box rectangle as a tuple of its center coordinates in conjunction with its width and height (TODO: Stimmt das? Macht keinen Sinn für Polygonen) and writes these four numbers to a JSON file.
+Note that the original images are not modified in any way. LabelMe parameterizes the bounding box rectangle as a tuple of its top left and bottom right corner coordinates and writes these four numbers to a JSON file.
 
 - TODO: Side-by-side Vergleich von Bild mit BBox und JSON Annotation.
 
 For the images without faces we choose a degenerate rectangle of zero width and height by convention.
 
 Now that we have a few hundred labelled samples two final steps of preprocessing remain. Usually these are performed on-the-fly as part of the training pipeline, but for the sake of clarity we'll do them explicitly.
-
-<!--We parameterize this bounding box as a set of 4 numbers, center_x, center_y, width and height, these are the four values our network will ultimately predict.
-
-This part is traditionally by far the most tedious of any machine learning project.
-
-In adition to that, our network will also predict a single number between 0 and 1, this number will indicate, whether or not the network thinks that there is a face in the frame at all.-->
 
 ## II.3 Augmenting our Data
 
@@ -88,17 +82,17 @@ This is nothing to sneeze at! In practice, getting to this point and finishing t
 
 # III.1 The Loss Function
 
-The next step is the choice of a *loss function*, also called the *training criterion*, which defines how the difference between the network's guess of a bounding box and the image's actual label shall be expressed numerically. For this project we choose the MSE between the center coordinates and the width and height.
+The next step is the choice of a *loss function*, also called the *training criterion*, which defines how the difference between the network's guess of a bounding box and the image's actual label shall be expressed numerically. For this project we choose the squared error between the corner coordinates x and y values.
 
-$$ L = (x-\hat{x})^2 + (y-\hat{y})^2 + (w-\hat{w})^2 + (h- \hat{h})^2$$
+$$ L = (x_{TL}-\hat{x}_{TL})^2 + (y_{TL}-\hat{y}_{TL})^2 + (x_{BR}-\hat{x}_{BR})^2 + (y_{BR}- \hat{y}_{BR})^2$$
 
-- TODO: Was soll der "Class Loss"?
+- TODO: Konfidenz / Klassifikationslos erläutern
 
-<!--By far the most important part of the training process of a neural network is the criterion (also called "loss function" or "target function").
+<!--
+In adition to that, our network will also predict a single number between 0 and 1, this number will indicate, whether or not the network thinks that there is a face in the frame at all.
 
-This function will determine what exactly our network will be optimized for and how well it will be able to do just that. Regression Problems (such as ours) often employ a "Mean Squared Error" and we will employ something similar. We are going to square the difference of bounding-box center-coordinates between output and label. Then we are going to the same thing for width and hight of output and label. Squaring the deltas has the effect that we are going to penalize both boxes that are too small and boxes that are too large. These two squared values are added together. The final part of our criterion will be our class loss.
-
-For this we will use a run of the mill BinaryCrossEntropy Loss. The "Box Loss" and the "Class Loss" are added together and returned as the final loss value.-->
+For this we will use a run of the mill BinaryCrossEntropy Loss. The "Box Loss" and the "Class Loss" are added together and returned as the final loss value.
+-->
 
 # III.2 Choice of Network Architecture
 
@@ -121,4 +115,3 @@ Now are done and can use our model to implement a realtime face tracking app!
 <If you want to learn more about the technical details behind neural networks, I strongly recommend "Neural Networks from Scratch in Python" by Harrison Kinsley & Daniel Kukiela if you are interested in a simple implementation and the intuition behind why and how neural networks do what they do. I also recommmend "Deep Learning" by Ian Goodfellow in case you are interested in the deep mathematical details of Deep Learning and neural networks>
 
 - TODO: "I" vs. "we"
-- TODO: Parametrisierung von BBoxes korrigieren (Eckpunkte anstatt Zentrum+H/W
