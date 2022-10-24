@@ -109,8 +109,6 @@ In practice, this step is often just a bunch of trial and error. Since this isn'
 
 # IV Done
 
-Now are done and can use our model to implement a realtime face tracking application.
-
+- TODO: Abschnitt IV
 - TODO: Finale BBox Animation
-
 - TODO: "I" vs. "we"
