@@ -79,7 +79,7 @@ This is nothing to sneeze at! In practice, getting to this point and finishing t
 
 # III Training
 
-# III.1 The Loss Function
+## III.1 The Loss Function
 
 The next step is the choice of a *loss function*, also called the *training criterion*, which defines how the difference between the network's guess of a bounding box and the image's actual label shall be expressed numerically. For this project we choose the squared error between the corner coordinates x and y values.
 
@@ -93,7 +93,7 @@ In adition to that, our network will also predict a single number between 0 and 
 For this we will use a run of the mill BinaryCrossEntropy Loss. The "Box Loss" and the "Class Loss" are added together and returned as the final loss value.
 -->
 
-# III.2 Choice of Network Architecture
+## III.2 Choice of Network Architecture
 
 In the past, convolutional neural networks (abbreviated *CNN* or *convnet*), a special kind of neural network architecture, have proven themselves to be very well suited for computer vision tasks. To solve our problem we're going to use a pretrained convnet and adjust it to our specific problem. This is a common practice referred to as *transfer learning* which we refer to in another blog post.
 
